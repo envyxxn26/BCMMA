@@ -1,0 +1,70 @@
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('registerForm');
+  const errorEl = document.getElementById('error');
+  const passwordInput = document.getElementById('password');
+  const toggleBtn = document.getElementById('togglePassword');
+
+  // Password visibility toggle
+  toggleBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    const isPassword = passwordInput.type === 'password';
+    passwordInput.type = isPassword ? 'text' : 'password';
+    const label = isPassword ? 'Hide password' : 'Show password';
+    const text = isPassword ? 'hide' : 'show';
+    toggleBtn.setAttribute('aria-label', label);
+    toggleBtn.setAttribute('title', label);
+    toggleBtn.querySelector('.icon').textContent = text;
+  });
+
+  function showError(msg){
+    errorEl.textContent = msg;
+    errorEl.style.display = msg ? 'block' : 'none';
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    showError('');
+
+    const firstName = form.firstName.value.trim();
+    const lastName = form.lastName.value.trim();
+    const email = form.email.value.trim();
+    const password = form.password.value;
+
+    if(!firstName){
+      showError('Please enter your first name.');
+      form.firstName.focus();
+      return;
+    }
+    if(!lastName){
+      showError('Please enter your last name.');
+      form.lastName.focus();
+      return;
+    }
+    if(!email){
+      showError('Please enter your email.');
+      form.email.focus();
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(email)){
+      showError('Please enter a valid email address.');
+      form.email.focus();
+      return;
+    }
+    if(!password || password.length < 6){
+      showError('Password must be at least 6 characters.');
+      form.password.focus();
+      return;
+    }
+
+    showError('');
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Registering...';
+    setTimeout(()=>{
+      btn.disabled = false;
+      btn.textContent = 'Register';
+      alert('Demo: registration submitted');
+    },1000);
+  });
+});

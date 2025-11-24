@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register - Bear's Cave Mixed Martial Arts</title>
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+  <main class="register-page" aria-labelledby="register-heading">
+    <section class="register-card" role="region">
+      <p class="lead">Create your account</p>
+
+      <form id="registerForm" class="register-form" novalidate>
+        <label for="firstName">First Name</label>
+        <input id="firstName" name="firstName" type="text" required autocomplete="given-name" />
+
+        <label for="lastName">Last Name</label>
+        <input id="lastName" name="lastName" type="text" required autocomplete="family-name" />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" inputmode="email" required autocomplete="email" />
+
+        <label for="password">Password</label>
+        <div class="password-group">
+          <input id="password" name="password" type="password" required autocomplete="new-password" minlength="6" />
+          <button type="button" id="togglePassword" class="toggle-password" aria-label="Show password" title="Show password">
+            <span class="icon">show</span>
+          </button>
+        </div>
+
+        <div id="error" class="error" aria-live="polite"></div>
+
+        <button type="submit" class="btn">Register</button>
+      </form>
+
+      <p class="small">Already have an account? <a href="login.html">Sign in</a></p>
+    </section>
+  </main>
+
+  <script src="../js/register.js" defer></script>
+</body>
+</html>

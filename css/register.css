@@ -1,0 +1,61 @@
+/* Geom Graphic font-face */
+@font-face {
+  font-family: 'Geom Graphic';
+  src: url('../assets/Geom-Graphic/fonts/Geom_Graphic_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geom Graphic';
+  src: url('../assets/Geom-Graphic/fonts/Geom_Graphic_SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --accent:#F80001;
+  --muted:#667085;
+  --danger:#d9534f;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Geom Graphic', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background:linear-gradient(180deg,var(--bg),#eef2f8),url('../assets/Background_logo.png') center/cover no-repeat fixed;
+  background-blend-mode:multiply;
+  color:#0b1724;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.register-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px}
+.register-card{width:100%;max-width:420px;background:var(--card);border-radius:12px;padding:32px;box-shadow:0 6px 20px rgba(11,23,36,0.08)}
+.lead{margin:0 0 18px 0;color:var(--muted)}
+
+.register-form{display:grid;gap:12px}
+label{font-size:13px;color:var(--muted)}
+input[type="text"],input[type="email"],input[type="password"]{width:100%;padding:12px 14px;border:1px solid #e6e9ef;border-radius:8px;font-size:15px}
+input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(248,0,1,0.08)}
+
+.password-group{position:relative;display:flex;align-items:center}
+.password-group input{flex:1}
+.toggle-password{position:absolute;right:12px;background:none;border:none;padding:4px 6px;cursor:pointer;color:#d0d0d0;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.toggle-password:hover{color:#999}
+.toggle-password:focus{outline:none}
+
+.btn{margin-top:6px;background:var(--accent);color:#fff;padding:12px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+.btn:active{transform:translateY(1px)}
+.btn:focus{outline:none;box-shadow:0 0 0 6px rgba(248,0,1,0.12)}
+
+.small{font-size:13px;color:var(--muted);margin-top:16px;text-align:center}
+.small a{color:var(--accent);text-decoration:none;font-weight:600}
+.small a:hover{text-decoration:underline}
+.error{color:var(--danger);font-size:14px;min-height:20px;margin-top:6px}
+
+@media (max-width:420px){.register-card{padding:20px;border-radius:8px}}
