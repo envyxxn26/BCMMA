@@ -1,0 +1,274 @@
+/* Geom Graphic font-face */
+@font-face {
+  font-family: 'Geom Graphic';
+  src: url('../assets/Geom-Graphic/fonts/Geom_Graphic_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geom Graphic';
+  src: url('../assets/Geom-Graphic/fonts/Geom_Graphic_SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --accent: #F80001;
+  --muted: #667085;
+  --danger: #d9534f;
+  --sidebar-width: 280px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Geom Graphic', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #eef2f8), url('../assets/pictures/Background_logo.png') center/cover no-repeat fixed;
+  background-blend-mode: multiply;
+  color: #0b1724;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  background: #000000;
+  box-shadow: 0 2px 8px rgba(11, 23, 36, 0.1);
+  position: relative;
+  z-index: 100;
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 70px;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  gap: 6px;
+}
+
+.hamburger {
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover .hamburger {
+  background: var(--accent);
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--card);
+  box-shadow: -2px 0 8px rgba(11, 23, 36, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 200;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-link {
+  padding: 16px 24px;
+  color: #0b1724;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  display: block;
+}
+
+.sidebar-link:hover {
+  background: var(--bg);
+  color: var(--accent);
+  border-left-color: var(--accent);
+  padding-left: 21px;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: #e6e9ef;
+  margin: 12px 0;
+}
+
+.sidebar-profile {
+  padding-top: 24px;
+  border-top: 1px solid #e6e9ef;
+}
+
+.sidebar-logout {
+  color: var(--danger);
+}
+
+.sidebar-logout:hover {
+  background: rgba(217, 83, 79, 0.1);
+  border-left-color: var(--danger);
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 150;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-image {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  flex: 1;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #0b1724;
+}
+
+.hero p {
+  font-size: 20px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 200px;
+  }
+
+  .header-container {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .sidebar-link {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
